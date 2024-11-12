@@ -42,7 +42,5 @@ function getPrice() {
     if (i < 3 && minBurger > menu[i]) minBurger = menu[i];
     if (i > 2 && minDrink > menu[i]) minDrink = menu[i];
   }
-  console.log(minBurger);
-  console.log(minDrink);
   document.getElementById("value").innerHTML = minBurger + minDrink - 50 + "원";
 }
