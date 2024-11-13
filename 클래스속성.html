@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .style-text {
+        color: red;
+        font-size: 20px;
+        font-weight: bold;
+        line-height: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <p>자바스크립트입니당당당>&lt;</p>
+    <!-- 자바스크립트입니당당당><  -->
+    <p class="default">자바스크립트입니다.</p>
+    <button id="addStyle">Add Style</button>
+    <button id="removeStyle">Remove Style</button>
+    <button id="toggleStyle">Toggle Style</button>
+    <script>
+      const el = document.querySelector("p");
+      // const el = document.getElementById("default");
+      const add = document.getElementById("addStyle");
+      const remove = document.getElementById("removeStyle");
+      const toggle = document.getElementById("toggleStyle");
+      add.addEventListener("click", () => {
+        el.classList.add("style-text");
+      });
+      remove.addEventListener("click", () => {
+        el.classList.remove("style-text");
+      });
+      toggle.addEventListener("click", () => {
+        el.classList.toggle("style-text");
+      });
+    </script>
+  </body>
+</html>
