@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <button>클릭</button>
+    <input type="text" /> -->
+    <a href="https://www.naver.com">네이버</a>
+    <a href="https://www.google.co.kr">구글</a>
+
+    <script>
+      // const btnEl = document.querySelector("button");
+      // btnEl.addEventListener("click", (event) => {
+      //   // 클릭했을때 event가 알아서 만들어짐(변수명은 상관없음)
+      //   console.log(`clientX:${event.clientX}`);
+      //   console.log(`clientY :${event.clientY}`);
+      //   console.log(`pageX:${event.pageX}`);
+      //   console.log(`pageY:${event.pageY}`);
+      //   console.log(`screenX:${event.screenX}`);
+      //   console.log(`screenY :${event.screenY}`);
+      // });
+      // const inputEl = document.querySelector("input");
+      // inputEl.addEventListener("keydown", (event) => {
+      //   console.log(`keyCode:${event.keyCode}`);
+      //   console.log(`ctrlKey:${event.ctrlKey}`);
+      //   console.log(`altKey:${event.altKey}`);
+      //   console.log(`shiftKey:${event.shiftKey}`);
+      // });
+      const aEls = document.querySelectorAll("a");
+      aEls.forEach((el) => {
+        el.addEventListener("click", (event) => {
+          event.preventDefault();
+        });
+      });
+    </script>
+  </body>
+</html>

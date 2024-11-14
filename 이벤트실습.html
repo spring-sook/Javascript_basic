@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #container {
+        width: 500px;
+        height: 450px;
+        margin: 50px auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .buttons {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 80%;
+        height: 10%;
+        margin-bottom: 5%;
+      }
+      #btn1,
+      #btn2,
+      #btn3 {
+        width: 31.5%;
+        height: 100%;
+        color: white;
+        font-size: 19px;
+        border: none;
+        cursor: pointer;
+      }
+      #btn1 {
+        background-color: rgb(123, 223, 123);
+      }
+      #btn2 {
+        background-color: rgb(247, 197, 91);
+      }
+      #btn3 {
+        background-color: rgb(178, 80, 197);
+      }
+      #btn1:active,
+      #btn2:active,
+      #btn3:active {
+        transform: translate(1.5px, 1.5px) scale(0.98);
+      }
+      #view {
+        width: 80%;
+        height: 60%;
+        background-color: rgb(153, 162, 243);
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div class="buttons">
+        <button id="btn1" onclick="changeColor1()">Green</button>
+        <button id="btn2" onclick="changeColor2()">Orange</button>
+        <button id="btn3" onclick="changeColor3()">Purple</button>
+      </div>
+      <div id="view"></div>
+    </div>
+
+    <script>
+      function changeColor1() {
+        document.querySelector("#view").style.backgroundColor =
+          "rgb(123, 223, 123)";
+      }
+      function changeColor2() {
+        document.querySelector("#view").style.backgroundColor =
+          "rgb(247, 197, 91)";
+      }
+      function changeColor3() {
+        document.querySelector("#view").style.backgroundColor =
+          "rgb(178, 80, 197)";
+      }
+    </script>
+  </body>
+</html>

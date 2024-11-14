@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #container {
+        width: 800px;
+        height: 800px;
+        display: flex;
+        position: relative;
+      }
+      #container img {
+        width: 50%;
+        height: 50%;
+      }
+      #openDescBtn {
+        position: absolute;
+        bottom: 50%;
+        width: 120px;
+        height: 30px;
+        margin: 10px 18px;
+        opacity: 70%;
+        font-size: 15px;
+        border-radius: 5px;
+      }
+      #desc {
+        margin: 36px 23px;
+        display: none;
+      }
+      #desc h3 {
+        color: rgb(50, 52, 155);
+        font-size: 22px;
+      }
+      #desc p {
+        line-height: 30px;
+      }
+      #closeDescBtn {
+        position: absolute;
+        bottom: 54%;
+        width: 120px;
+        height: 30px;
+        font-size: 15px;
+        border-radius: 5px;
+        border: 1px solid #000;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <img id="itzyImg" src="./css/ITZY.webp" />
+      <button id="openDescBtn" onclick="openBtnClick()">상세 설명 보기</button>
+      <div id="desc">
+        <h3>그룹 있지</h3>
+        <p>
+          팀명 '<span style="font-weight: bold">ITZY</span>'는 '너희가 원하하는
+          거 전부 있찌? 있지!' 라는 뜻을 가지고 있으며, 정식 한글 표기법은
+          있지이다. 혹 영어명인 '<span style="font-weight: bold">ITZY</span
+          >'로만 들어본 사람들이 한글로는 어떻게 적는지 몰라 '잇지'라고 부르는
+          경우도 꽤 많이 있는데, '있지'라고 불러야 한다며 정정해주는 것이 팬덤
+          잇지에게는 일상이 되었다.
+        </p>
+        <button id="closeDescBtn" onclick="closeBtnClick()">
+          상세 설명 닫기
+        </button>
+      </div>
+    </div>
+    <script>
+      function openBtnClick() {
+        document.getElementById("openDescBtn").style.display = "none";
+        document.getElementById("desc").style.display = "block";
+      }
+      function closeBtnClick() {
+        document.getElementById("openDescBtn").style.display = "block";
+        document.getElementById("desc").style.display = "none";
+      }
+    </script>
+  </body>
+</html>

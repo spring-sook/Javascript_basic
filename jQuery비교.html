@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="myElement">
+      메인
+      <div class="myElements">1번 요소</div>
+      <div class="myElements">2번 요소</div>
+      <div class="myElements">3번 요소</div>
+    </div>
+
+    <!-- 보통 head 하단에 넣으라고 하지만, 이거 로딩될때까지 기다리느니 제일 아래에 넣는게 효율적 -->
+    <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+      const el = document.querySelector("#myElement");
+      console.log(el.innerHTML);
+      const els = document.querySelectorAll(".myElements");
+      console.log(...els);
+      // const $el = $("#myElement");
+      // const $els = $(".myElements");
+      // console.log($el.text());
+      // console.log($els.text());
+    </script>
+  </body>
+</html>
