@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      @font-face {
+        font-family: "Harry Beast Display";
+        src: url("../css/HarryBeastDisplay-Regular.woff2") format("woff2");
+        font-weight: 100;
+        font-style: normal;
+      }
+      h1 {
+        margin: 0;
+      }
+      #title {
+        margin: 20px;
+        font-family: "Harry Beast Display", sans-serif;
+        font-size: 40px;
+        color: rgb(56, 27, 187);
+      }
+      #subtitle {
+        margin-bottom: 20px;
+        font-size: 30px;
+      }
+      #outer-container {
+        width: 500px;
+        height: auto;
+        margin: 50px auto;
+        background-color: rgb(231, 231, 231);
+        display: flex;
+        justify-content: center;
+      }
+      #inner-container {
+        width: 450px;
+        margin: 25px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: white;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 90%;
+      }
+      input {
+        width: 100%;
+        height: 40px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        padding: 0 10px;
+      }
+      p {
+        font-size: 13px;
+        text-align: right;
+        margin: 5px 0 10px 0;
+        width: 100%;
+        height: 16px;
+      }
+      button {
+        width: 100%;
+        height: 40px;
+        font-size: 16px;
+        font-weight: bold;
+        color: white;
+        background-color: rgb(60, 105, 240);
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        margin: 10px 0 25px 0;
+      }
+      button:disabled {
+        opacity: 0.5;
+      }
+      button:active {
+        opacity: 1;
+      }
+      button:hover {
+        background-color: rgb(67, 142, 240);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="outer-container">
+      <div id="inner-container">
+        <h1 id="title">SOOK LAND</h1>
+        <h1 id="subtitle">회원 가입</h1>
+        <form action="#">
+          <input
+            type="text"
+            placeholder="아이디(8~20자, 영문/숫자/밑줄)"
+            id="id"
+            onclick="isIDValid()"
+          />
+          <p id="isIDValid"></p>
+          <input
+            type="password"
+            placeholder="비밀번호(8자 이상, 영문대소문자/숫자/특수문자 모두 포함)"
+            id="pw"
+            onclick="isPWValid()"
+          />
+          <p id="isPWValid"></p>
+          <input
+            type="email"
+            placeholder="e-mail"
+            id="email"
+            onclick="isEMAILValid()"
+          />
+          <p id="isEMAILValid"></p>
+          <input
+            type="tel"
+            placeholder="전화번호(010-oooo-oooo)"
+            id="phone"
+            onclick="isPHONEValid()"
+          />
+          <p id="isPHONEValid"></p>
+          <button id="submitBtn" disabled>가입 요청</button>
+        </form>
+      </div>
+    </div>
+    <script>
+      let isIDValidFlag = false;
+      let isPWValidFlag = false;
+      let isEMAILValidFlag = false;
+      let isPHONEValidFlag = false;
+
+      const regex_id = /^[a-zA-Z0-9_]{8,20}$/;
+      const regex_pw =
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+={}\[\]:;"'<>,.?/\\|`~]).{8,}$/;
+      const regex_email = /^([a-z]+\d*)+(\.?\w+)+@\w+(\.\w{2,3})+$/;
+      const regex_phone = /^\d{3}-\d{4}-\d{4}$/;
+
+      const idInput = document.getElementById("id");
+      const pwInput = document.getElementById("pw");
+      const emailInput = document.getElementById("email");
+      const phoneInput = document.getElementById("phone");
+
+      const showIDValid = document.getElementById("isIDValid");
+      const showPWValid = document.getElementById("isPWValid");
+      const showEMAILValid = document.getElementById("isEMAILValid");
+      const showPHONEValid = document.getElementById("isPHONEValid");
+
+      function isValid(input, regex, showValid) {
+        if (input === "") {
+          showValid.textContent = "";
+          return;
+        }
+        if (regex.test(input)) {
+          showValid.textContent = "사용 가능합니다.";
+          showValid.style.color = "green";
+        } else {
+          showValid.textContent = "입력 조건이 맞지 않습니다.";
+          showValid.style.color = "red";
+        }
+      }
+      function isIDValid() {
+        idInput.addEventListener("input", function () {
+          idInput.style.border = "1px solid blue";
+          const input = idInput.value;
+          isValid(input, regex_id, showIDValid);
+          isIDValidFlag = regex_id.test(input);
+          btnActive();
+        });
+      }
+      function isPWValid() {
+        pwInput.addEventListener("input", function () {
+          const input = pwInput.value;
+          isValid(input, regex_pw, showPWValid);
+          isPWValidFlag = regex_pw.test(input);
+          btnActive();
+        });
+      }
+      function isEMAILValid() {
+        emailInput.addEventListener("input", function () {
+          const input = emailInput.value;
+          isValid(input, regex_email, showEMAILValid);
+          isEMAILValidFlag = regex_email.test(input);
+          btnActive();
+        });
+      }
+      function isPHONEValid() {
+        phoneInput.addEventListener("input", function () {
+          const input = phoneInput.value;
+          isValid(input, regex_phone, showPHONEValid);
+          isPHONEValidFlag = regex_phone.test(input);
+          btnActive();
+        });
+      }
+      function btnActive() {
+        const submitBtn = document.getElementById("submitBtn");
+        if (
+          isIDValidFlag &&
+          isPWValidFlag &&
+          isEMAILValidFlag &&
+          isPHONEValidFlag
+        ) {
+          submitBtn.removeAttribute("disabled");
+        } else {
+          submitBtn.setAttribute("disabled", "true");
+        }
+      }
+      // isIDValid();
+      // isPWValid();
+      // isEMAILValid();
+      // isPHONEValid();
+    </script>
+  </body>
+</html>
